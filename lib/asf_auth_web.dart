@@ -13,8 +13,15 @@ import 'asf_token_response.dart';
 /// A Calculator.
 class AsfAuthWeb {
   html.WindowBase? _loginPopup;
+  final AppAuthWebPlugin _appAuthWebPlugin = AppAuthWebPlugin();
 
-  AsfAuthWeb() {}
+  AsfAuthWeb._privateConstructor();
+
+  static final AsfAuthWeb _instance = AsfAuthWeb._privateConstructor();
+
+  factory AsfAuthWeb() {
+    return _instance;
+  }
 
   authenticateAndListen(AsfAuthTokenRequest request) {
     html.window.onMessage.listen((event) {
@@ -46,9 +53,9 @@ class AsfAuthWeb {
         .open(authUrl, "Google Auth", "width=800, height=900, scrollbars=yes");
   }
 
-  static Future<AsfTokenResponse?> authenticate(AsfAuthTokenRequest request,
+  Future<AsfTokenResponse?> authenticate(AsfAuthTokenRequest request,
       AsfAuthServiceConfiguration serviceConfig) async {
-    final response = await AppAuthWebPlugin().authorizeAndExchangeCode(
+    final response = await _appAuthWebPlugin.authorizeAndExchangeCode(
       AuthorizationTokenRequest(
         request.clientId,
         request.redirectUrl,
