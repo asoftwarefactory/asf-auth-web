@@ -3,6 +3,7 @@ library asf_auth_web;
 import 'dart:core';
 import 'dart:html' as html;
 
+import 'package:asf_auth_web/app_auth_web.dart';
 import 'package:asf_auth_web/asf_auth_service_config.dart';
 import 'package:flutter_appauth_platform_interface/flutter_appauth_platform_interface.dart';
 
@@ -45,10 +46,9 @@ class AsfAuthWeb {
         .open(authUrl, "Google Auth", "width=800, height=900, scrollbars=yes");
   }
 
-  static Future<AsfTokenResponse> authenticate(AsfAuthTokenRequest request,
+  static Future<AsfTokenResponse?> authenticate(AsfAuthTokenRequest request,
       AsfAuthServiceConfiguration serviceConfig) async {
-    final response =
-        await FlutterAppAuthPlatform.instance.authorizeAndExchangeCode(
+    final response = await AppAuthWebPlugin().authorizeAndExchangeCode(
       AuthorizationTokenRequest(
         request.clientId,
         request.redirectUrl,
@@ -62,13 +62,16 @@ class AsfAuthWeb {
       ),
     );
 
-    final asfTokenResponse = AsfTokenResponse(
-        response.accessToken,
-        response.refreshToken,
-        response.accessTokenExpirationDateTime,
-        response.idToken,
-        response.tokenType,
-        response.tokenAdditionalParameters);
-    return asfTokenResponse;
+    if (response != null) {
+      final asfTokenResponse = AsfTokenResponse(
+          response.accessToken,
+          response.refreshToken,
+          response.accessTokenExpirationDateTime,
+          response.idToken,
+          response.tokenType,
+          response.tokenAdditionalParameters);
+      return asfTokenResponse;
+    }
+    return null;
   }
 }
