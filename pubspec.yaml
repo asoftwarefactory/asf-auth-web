@@ -10,6 +10,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
+  pointycastle:
+  retry: ^3.1.0-null-safety.0
+  flutter_appauth_platform_interface: 2.0.0
+  http:
 
 dev_dependencies:
   flutter_test:

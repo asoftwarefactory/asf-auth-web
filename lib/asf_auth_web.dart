@@ -1,6 +1,12 @@
 library asf_auth_web;
 
+import 'dart:core';
 import 'dart:html' as html;
+
+import 'package:asf_auth_web/asf_auth_service_config.dart';
+import 'package:flutter_appauth_platform_interface/flutter_appauth_platform_interface.dart';
+
+import 'asf_auth_token_request.dart';
 
 /// A Calculator.
 class AsfAuthWeb {
@@ -8,7 +14,7 @@ class AsfAuthWeb {
 
   AsfAuthWeb() {}
 
-  authenticate() {
+  authenticateAndListen(AsfAuthTokenRequest request) {
     html.window.onMessage.listen((event) {
       // The event contains the token which means the user is connected.
       if (event.data.toString().contains('code=')) {
@@ -22,7 +28,7 @@ class AsfAuthWeb {
         this._loginPopup?.close();
       }
     });
-
+// https://login-dev.asfweb.it/fbce008c-b9ac-4aa3-928b-9fcaea28fa44/Account/Login?ReturnUrl=%2Ffbce008c-b9ac-4aa3-928b-9fcaea28fa44%2Fconnect%2Fauthorize%2Fcallback%3Fresponse_type%3Dcode%26client_id%3Dcardmanagermobileclient%26redirect_uri%3Dit.asf.cardmanager%253A%252Foauthredirect%26scope%3Dopenid%2520profile%2520roles%2520offline_access%2520cardmanager%2520asfappcore%26state%3D0966351392878V3684350SYB0%26code_challenge%3DrLTzyYq6dT6YocNYC1jw0QyOUm9eCtpNpotowkATUkw%26code_challenge_method%3DS256'
     final currentUri = Uri.base;
     final redirectUri = Uri(
       host: currentUri.host,
@@ -36,5 +42,22 @@ class AsfAuthWeb {
     // Keeping a reference to the popup window so you can close it after login is completed
     this._loginPopup = html.window
         .open(authUrl, "Google Auth", "width=800, height=900, scrollbars=yes");
+  }
+
+  static Future<TokenResponse> authenticate(AsfAuthTokenRequest request,
+      AsfAuthServiceConfiguration serviceConfig) async {
+    return await FlutterAppAuthPlatform.instance.authorizeAndExchangeCode(
+      AuthorizationTokenRequest(
+        request.clientId,
+        request.redirectUrl,
+        issuer: request.issuer,
+        serviceConfiguration: AuthorizationServiceConfiguration(
+          serviceConfig.authorizationEndpoint,
+          serviceConfig.tokenEndpoint,
+        ),
+        scopes: request.scopes,
+        preferEphemeralSession: false,
+      ),
+    );
   }
 }
