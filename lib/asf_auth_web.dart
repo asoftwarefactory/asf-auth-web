@@ -7,6 +7,7 @@ import 'package:asf_auth_web/asf_auth_service_config.dart';
 import 'package:flutter_appauth_platform_interface/flutter_appauth_platform_interface.dart';
 
 import 'asf_auth_token_request.dart';
+import 'asf_token_response.dart';
 
 /// A Calculator.
 class AsfAuthWeb {
@@ -44,9 +45,10 @@ class AsfAuthWeb {
         .open(authUrl, "Google Auth", "width=800, height=900, scrollbars=yes");
   }
 
-  static Future<TokenResponse> authenticate(AsfAuthTokenRequest request,
+  static Future<AsfTokenResponse> authenticate(AsfAuthTokenRequest request,
       AsfAuthServiceConfiguration serviceConfig) async {
-    return await FlutterAppAuthPlatform.instance.authorizeAndExchangeCode(
+    final response =
+        await FlutterAppAuthPlatform.instance.authorizeAndExchangeCode(
       AuthorizationTokenRequest(
         request.clientId,
         request.redirectUrl,
@@ -59,5 +61,14 @@ class AsfAuthWeb {
         preferEphemeralSession: false,
       ),
     );
+
+    final asfTokenResponse = AsfTokenResponse(
+        response.accessToken,
+        response.refreshToken,
+        response.accessTokenExpirationDateTime,
+        response.idToken,
+        response.tokenType,
+        response.tokenAdditionalParameters);
+    return asfTokenResponse;
   }
 }
