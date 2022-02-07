@@ -56,17 +56,15 @@ class AsfAuthWeb {
   Future<AsfTokenResponse?> authenticate(AsfAuthTokenRequest request,
       AsfAuthServiceConfiguration serviceConfig) async {
     final response = await _appAuthWebPlugin.authorizeAndExchangeCode(
-      AuthorizationTokenRequest(
-        request.clientId,
-        request.redirectUrl,
-        issuer: request.issuer,
-        serviceConfiguration: AuthorizationServiceConfiguration(
-          serviceConfig.authorizationEndpoint,
-          serviceConfig.tokenEndpoint,
-        ),
-        scopes: request.scopes,
-        preferEphemeralSession: false,
-      ),
+      AuthorizationTokenRequest(request.clientId, request.redirectUrl,
+          issuer: request.issuer,
+          serviceConfiguration: AuthorizationServiceConfiguration(
+            serviceConfig.authorizationEndpoint,
+            serviceConfig.tokenEndpoint,
+          ),
+          scopes: request.scopes,
+          preferEphemeralSession: false,
+          additionalParameters: {"port": "8080"}),
     );
 
     if (response != null) {
