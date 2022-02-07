@@ -17,10 +17,10 @@ class AsfAuthWeb {
 
   AsfAuthWeb._privateConstructor();
 
-  static final AsfAuthWeb _instance = AsfAuthWeb._privateConstructor();
+  static final AsfAuthWeb instance = AsfAuthWeb._privateConstructor();
 
   factory AsfAuthWeb() {
-    return _instance;
+    return instance;
   }
 
   authenticateAndListen(AsfAuthTokenRequest request) {
