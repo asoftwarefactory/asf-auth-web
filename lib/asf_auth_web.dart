@@ -53,14 +53,13 @@ class AsfAuthWeb {
         .open(authUrl, "Google Auth", "width=800, height=900, scrollbars=yes");
   }
 
-  Future<AsfTokenResponse?> authenticate(AsfAuthTokenRequest request,
-      AsfAuthServiceConfiguration serviceConfig) async {
+  Future<AsfTokenResponse?> authenticate(AsfAuthTokenRequest request) async {
     final response = await _appAuthWebPlugin.authorizeAndExchangeCode(
       AuthorizationTokenRequest(request.clientId, request.redirectUrl,
           issuer: request.issuer,
           serviceConfiguration: AuthorizationServiceConfiguration(
-            serviceConfig.authorizationEndpoint,
-            serviceConfig.tokenEndpoint,
+            request.authorizationEndpoint,
+            request.tokenEndpoint,
           ),
           scopes: request.scopes,
           preferEphemeralSession: false,
@@ -78,5 +77,40 @@ class AsfAuthWeb {
       return asfTokenResponse;
     }
     return null;
+  }
+
+  Future<AsfTokenResponse?> refresh(
+      String refreshToken, AsfAuthTokenRequest request) async {
+    try {
+      if (refreshToken == '') {
+        throw Exception('Refresh token can\'t be empty');
+      }
+
+      final TokenResponse? response = await _appAuthWebPlugin.token(
+        TokenRequest(
+          request.clientId,
+          request.redirectUrl,
+          discoveryUrl: request.discoveryUrl,
+          refreshToken: refreshToken,
+          scopes: request.scopes,
+          additionalParameters: request.parameter,
+        ),
+      );
+      if (response != null) {
+        final refreshTokenResponse = AsfTokenResponse(
+          response.accessToken,
+          response.refreshToken,
+          response.accessTokenExpirationDateTime,
+          response.idToken,
+          response.tokenType,
+          response.tokenAdditionalParameters,
+        );
+        return refreshTokenResponse;
+      } else {
+        throw Exception('Refresh token request failed');
+      }
+    } catch (e) {
+      throw Exception('Refresh token request failed');
+    }
   }
 }

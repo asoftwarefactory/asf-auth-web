@@ -1,18 +1,22 @@
-import 'asf_auth_service_config.dart';
-
 class AsfAuthTokenRequest {
   String clientId;
   String redirectUrl;
+  final String authorizationEndpoint;
+  final String tokenEndpoint;
 
   String? clientSecret;
   List<String>? scopes;
   String? issuer;
   String? discoveryUrl;
+  Map<String, String>? parameter;
   bool allowInsecureConnections;
   bool preferEphemeralSession;
   AsfAuthTokenRequest({
     required this.clientId,
     required this.redirectUrl,
+    required this.authorizationEndpoint,
+    required this.tokenEndpoint,
+    this.parameter,
     this.clientSecret,
     this.scopes,
     this.issuer,
