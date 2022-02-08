@@ -4,7 +4,6 @@ import 'dart:core';
 import 'dart:html' as html;
 
 import 'package:asf_auth_web/app_auth_web.dart';
-import 'package:asf_auth_web/asf_auth_service_config.dart';
 import 'package:flutter_appauth_platform_interface/flutter_appauth_platform_interface.dart';
 
 import 'asf_auth_token_request.dart';
