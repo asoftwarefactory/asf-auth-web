@@ -93,7 +93,7 @@ class AsfAuthWeb {
           refreshToken: refreshToken,
           scopes: request.scopes,
           additionalParameters: request.parameter,
-          grantType: "authorization_code",
+          grantType: "refresh_token",
         ),
       );
       if (response != null) {
