@@ -62,7 +62,7 @@ class AsfAuthWeb {
           ),
           scopes: request.scopes,
           preferEphemeralSession: false,
-          additionalParameters: {"port": "8080"}),
+          additionalParameters: request.parameter),
     );
 
     if (response != null) {
