@@ -1,12 +1,12 @@
 class AsfTokenResponse {
-  AsfTokenResponse(
-    this.accessToken,
-    this.refreshToken,
-    this.accessTokenExpirationDateTime,
-    this.idToken,
+  AsfTokenResponse({
+    required this.accessToken,
+    required this.refreshToken,
+    required this.accessTokenExpirationDateTime,
+    required this.idToken,
     this.tokenType,
     this.tokenAdditionalParameters,
-  );
+  });
 
   /// The access token returned by the authorization server.
   final String accessToken;
@@ -25,8 +25,8 @@ class AsfTokenResponse {
   final String idToken;
 
   /// The type of token returned by the authorization server.
-  final String tokenType;
+  String? tokenType;
 
   /// Contains additional parameters returned by the authorization server from making the token request.
-  final Map<String, dynamic> tokenAdditionalParameters;
+  Map<String, dynamic>? tokenAdditionalParameters;
 }

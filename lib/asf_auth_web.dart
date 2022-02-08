@@ -67,12 +67,12 @@ class AsfAuthWeb {
 
     if (response != null) {
       final asfTokenResponse = AsfTokenResponse(
-          response.accessToken,
-          response.refreshToken,
-          response.accessTokenExpirationDateTime,
-          response.idToken,
-          response.tokenType,
-          response.tokenAdditionalParameters);
+          accessToken: response.accessToken,
+          refreshToken: response.refreshToken,
+          accessTokenExpirationDateTime: response.accessTokenExpirationDateTime,
+          idToken: response.idToken,
+          tokenType: response.tokenType,
+          tokenAdditionalParameters: response.tokenAdditionalParameters);
       return asfTokenResponse;
     }
     return null;
@@ -97,12 +97,10 @@ class AsfAuthWeb {
       );
       if (response != null) {
         final refreshTokenResponse = AsfTokenResponse(
-          response.accessToken,
-          response.refreshToken,
-          response.accessTokenExpirationDateTime,
-          response.idToken,
-          response.tokenType,
-          response.tokenAdditionalParameters,
+          accessToken: response.accessToken,
+          refreshToken: response.refreshToken,
+          accessTokenExpirationDateTime: response.accessTokenExpirationDateTime,
+          idToken: response.idToken,
         );
         return refreshTokenResponse;
       } else {
