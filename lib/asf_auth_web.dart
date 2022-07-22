@@ -58,6 +58,7 @@ class AsfAuthWeb {
             authorizationEndpoint: request.authorizationEndpoint,
             tokenEndpoint: request.tokenEndpoint,
           ),
+          promptValues:request.promptValues,
           scopes: request.scopes,
           preferEphemeralSession: false,
           additionalParameters: request.parameter),

@@ -4,6 +4,7 @@ class AsfAuthTokenRequest {
   final String authorizationEndpoint;
   final String tokenEndpoint;
 
+  List<String>? promptValues;
   String? clientSecret;
   List<String>? scopes;
   String? issuer;
@@ -16,6 +17,7 @@ class AsfAuthTokenRequest {
     required this.redirectUrl,
     required this.authorizationEndpoint,
     required this.tokenEndpoint,
+    this.promptValues,
     this.parameter,
     this.clientSecret,
     this.scopes,
