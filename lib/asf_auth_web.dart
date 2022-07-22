@@ -1,7 +1,6 @@
 library asf_auth_web;
 
 import 'dart:core';
-import 'dart:html' as html;
 
 import 'package:asf_auth_web/app_auth_web.dart';
 import 'package:flutter_appauth_platform_interface/flutter_appauth_platform_interface.dart';
@@ -11,7 +10,6 @@ import 'asf_token_response.dart';
 
 /// A Calculator.
 class AsfAuthWeb {
-  html.WindowBase? _loginPopup;
   final AppAuthWebPlugin _appAuthWebPlugin = AppAuthWebPlugin();
 
   AsfAuthWeb._privateConstructor();

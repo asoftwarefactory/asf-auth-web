@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names, curly_braces_in_flow_control_structures
+
 import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
@@ -28,7 +30,7 @@ class AppAuthWebPlugin extends FlutterAppAuthPlatform {
   static const String _AUTH_RESPONSE_INFO = "auth_info";
 
   static html.WindowBase? _loginPopup;
-  static final callbackUrlCompleter = new Completer<String>();
+  static final callbackUrlCompleter = Completer<String>();
 
   static registerWith(Registrar registrar) {
     FlutterAppAuthPlatform.instance = AppAuthWebPlugin();
@@ -244,7 +246,9 @@ class AppAuthWebPlugin extends FlutterAppAuthPlatform {
           .replaceAll("%2", 'Login request returned no code'));
 
     return AuthorizationResponse(
-        authCode, codeVerifier, resultUri.queryParameters);
+        authorizationCode: authCode,
+        codeVerifier: authCode,
+        authorizationAdditionalParameters: resultUri.queryParameters);
   }
 
   static Future<AuthorizationTokenResponse> exchangeCode(
