@@ -39,7 +39,19 @@
     },
     {
       "name": "convert",
-      "rootUri": "file:///Users/mariomazzarelli/flutter/.pub-cache/hosted/pub.dartlang.org/convert-3.0.1",
+      "rootUri": "file:///Users/mariomazzarelli/flutter/.pub-cache/hosted/pub.dartlang.org/convert-3.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "crypto",
+      "rootUri": "file:///Users/mariomazzarelli/flutter/.pub-cache/hosted/pub.dartlang.org/crypto-3.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
+      "name": "csslib",
+      "rootUri": "file:///Users/mariomazzarelli/flutter/.pub-cache/hosted/pub.dartlang.org/csslib-0.17.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -57,7 +69,7 @@
     },
     {
       "name": "flutter_appauth_platform_interface",
-      "rootUri": "file:///Users/mariomazzarelli/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_appauth_platform_interface-5.1.0",
+      "rootUri": "file:///Users/mariomazzarelli/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_appauth_platform_interface-5.2.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -80,6 +92,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "html",
+      "rootUri": "file:///Users/mariomazzarelli/flutter/.pub-cache/hosted/pub.dartlang.org/html-0.15.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "http",
       "rootUri": "file:///Users/mariomazzarelli/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.13.4",
       "packageUri": "lib/",
@@ -87,7 +105,7 @@
     },
     {
       "name": "http_parser",
-      "rootUri": "file:///Users/mariomazzarelli/flutter/.pub-cache/hosted/pub.dartlang.org/http_parser-4.0.0",
+      "rootUri": "file:///Users/mariomazzarelli/flutter/.pub-cache/hosted/pub.dartlang.org/http_parser-4.0.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -135,7 +153,7 @@
     },
     {
       "name": "pointycastle",
-      "rootUri": "file:///Users/mariomazzarelli/flutter/.pub-cache/hosted/pub.dartlang.org/pointycastle-3.6.0",
+      "rootUri": "file:///Users/mariomazzarelli/flutter/.pub-cache/hosted/pub.dartlang.org/pointycastle-3.6.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -189,7 +207,19 @@
     },
     {
       "name": "typed_data",
-      "rootUri": "file:///Users/mariomazzarelli/flutter/.pub-cache/hosted/pub.dartlang.org/typed_data-1.3.0",
+      "rootUri": "file:///Users/mariomazzarelli/flutter/.pub-cache/hosted/pub.dartlang.org/typed_data-1.3.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "universal_html",
+      "rootUri": "file:///Users/mariomazzarelli/flutter/.pub-cache/hosted/pub.dartlang.org/universal_html-2.0.8",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "universal_io",
+      "rootUri": "file:///Users/mariomazzarelli/flutter/.pub-cache/hosted/pub.dartlang.org/universal_io-2.0.4",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -206,7 +236,7 @@
       "languageVersion": "2.15"
     }
   ],
-  "generated": "2022-07-22T10:33:34.984739Z",
+  "generated": "2022-07-25T15:44:07.682214Z",
   "generator": "pub",
   "generatorVersion": "2.17.6"
 }

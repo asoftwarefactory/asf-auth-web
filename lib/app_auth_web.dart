@@ -3,12 +3,12 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
+import "package:universal_html/html.dart" as html;
 import 'dart:typed_data';
-import 'dart:html' as html;
+import 'package:flutter_appauth_platform_interface/flutter_appauth_platform_interface.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:http/http.dart' as http;
 import 'package:pointycastle/digests/sha256.dart';
-import 'package:flutter_appauth_platform_interface/flutter_appauth_platform_interface.dart';
 
 /// A Calculator.
 class AppAuthWebPlugin extends FlutterAppAuthPlatform {
@@ -406,7 +406,7 @@ class AppAuthWebPlugin extends FlutterAppAuthPlatform {
 
     html.querySelector("body")?.children.add(child);
 
-    final c = new Completer<String>();
+    final c = Completer<String>();
 
     html.window.onMessage.first.then((event) {
       final url = event.data.toString();
